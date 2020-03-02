@@ -37,6 +37,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def followings
+    @title = "Follow Users"
+    @book = Book.new
+    @user = User.find(params[:id])
+    @users = @user.followings
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @book = Book.new
+    @user = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follow'
+  end
+
+
 private
   #更新する項目　:name :profile_image :introduction
   def user_params

@@ -24,6 +24,16 @@
             </tr>
             <td>introduction</td>
             <td><%= user.introduction %></td>
+            </tr>
+            <tr>
+              <td>Follows</td>
+              <td><%= link_to user.followings.count,followings_user_path(user)%></td>
+            </tr>
+            <tr>
+              <td>Followers</td>
+              <td><%= link_to user.followers.count,followers_user_path(user)%></td>
+            </tr>
+
           </tbody>
         </table>
 
@@ -39,6 +49,15 @@
           <% end %>
       <% end %>
       </div>
+
+
+    <!-- フォロー・フォロワー機能 -->
+    <br>
+    <div class="row">
+      <% if user != current_user %>
+        <%= render 'relationships/follow',user: @user %>
+      <% end %>      
+    </div>
 
     <!--  投稿画面 -->
       <h1>New book</h1>

@@ -1,0 +1,31 @@
+<%provide :title,@title%>
+<%= render 'layouts/sidebar',user: @user,book: @book %>
+
+<div class="row">
+  <div class="col-xs-8">
+    <h2><%= yield(:title)%></h2>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>  
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg',class: "pull-left profile-img",fallback: "no_image.jpg", size: "60x60" %>
+                </td>
+                <td><%=user.name %></td>
+                <td><%= render 'relationships/follow',user: user %></td>
+                <td><%= link_to 'show',user_path(user) %></td>
+              </tr> 
+            <% end %>
+          </tbody>
+        </table>
+  </div>
+</div>

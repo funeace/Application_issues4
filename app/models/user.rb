@@ -12,8 +12,29 @@ class User < ApplicationRecord
   #bookモデルと1:多の関係を作る（has_manyが1のほうで、 belongs_toが多のほう）
   has_many :books, dependent: :destroy
 
+  # follow_followerを作る
+  has_many :relationships
+  has_many :followings, through: :relationships, source: :follow
+
+  has_many :reverse_relationships,class_name: 'Relationship',foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_relationships, source: :user
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def follow?(user)
+    self.followings.include?(user)
+  end
+
+  def following(user)
+    if self.follow?(user) == false
+      self.relationships.new(follow_id: user.id).save
+    end
+  end
+
+  def unfollow(user)
+      self.relationships.find_by(follow_id: user.id).destroy
+  end
+
 end
