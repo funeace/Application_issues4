@@ -1,31 +1,18 @@
-# README
-# やらないといけない
- 1.共通部分を完成 ok
- 2.bootstrap ok
- 3.メッセージ ok
- 4.レコードの並び順 ok
- 5.validation ok
- 6.テスト ok
- 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 課題4の課題となります。
+Bookers2にフォロー・フォロワー機能を追加しましょう<br/>
+実装する機能<br/>
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+コントローラ<br/>
+relationshipsコントローラを追加<br/>
+createアクションを追加<br/>
+用途：フォローを作成<br/>
+destroyアクションを追加<br/>
+用途：フォローを削除<br/>
+フォローする・外すボタンをクリックしたら元画面に遷移すること<br/>
+モデル<br/>
+relationshipモデルを作成<br/>
+ビュー<br/>
+サイドバーにフォロー数・フォロワー数を表示<br/>
+マイページ以外のサイドバーにフォローする・外すボタンを追加<br/>
+ユーザー一覧画面にフォロー数・フォロワー数・フォローする・外すボタンの設置<br/>
+フォロー・フォロワー一覧画面を作成すること
